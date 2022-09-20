@@ -512,7 +512,7 @@ class ModUpdater:
             self._download_latest_release(mod)
 
         # Update the mod list file
-        self._update_mod_list()
+        #self._update_mod_list()
 
     def _prune_old_releases(self, mod: str):
         """

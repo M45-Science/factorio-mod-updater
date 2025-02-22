@@ -508,7 +508,7 @@ class ModUpdater:
                 )
                 continue
 
-            self._prune_old_releases(mod)
+            #self._prune_old_releases(mod)
             self._download_latest_release(mod)
 
         # Update the mod list file

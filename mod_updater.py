@@ -18,6 +18,7 @@ import re
 import shutil
 import subprocess
 import sys
+import shutil
 
 # External URL processing library
 # http://docs.python-requests.org/en/master/user/quickstart/
@@ -508,7 +509,7 @@ class ModUpdater:
                 )
                 continue
 
-            #self._prune_old_releases(mod)
+            self._prune_old_releases(mod)
             self._download_latest_release(mod)
 
         # Update the mod list file
@@ -547,7 +548,15 @@ class ModUpdater:
 
             rel_path = os.path.join(self.mod_path, rel)
             try:
-                os.remove(rel_path)
+                #os.remove(rel_path)
+
+
+                dir_name = "old_mods"
+                if not os.path.exists(dir_name):
+                    os.mkdir(dir_name)
+
+                shutil.move(rel_path, os.path.join(dir_name, os.path.basename(rel_path)))
+
                 result = "Success"
                 message = ""
             except OSError as error:
